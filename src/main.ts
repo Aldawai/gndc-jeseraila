@@ -17,10 +17,6 @@ let img = new Image()
 
 let fullName = ''
 
-let cropRect = {x: 0, y: 0, w: 196, h: 298}
-
-// document.onload = initialize
-
 initialize()
 function initialize() {
   console.log('Initialization !')
@@ -29,7 +25,7 @@ function initialize() {
   
   imageLoader.onchange = (e: any) => {
     const reader = new FileReader();
-    reader.onload = (o) => {
+    reader.onload = () => {
       const res = reader.result;
       if (typeof res == 'string') {
         img.src = res;
