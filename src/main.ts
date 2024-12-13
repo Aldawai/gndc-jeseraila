@@ -17,8 +17,6 @@ let img = new Image()
 
 let fullName = ''
 
-let imageSource = ''
-
 let cropRect = {x: 0, y: 0, w: 196, h: 298}
 
 // document.onload = initialize
@@ -34,7 +32,6 @@ function initialize() {
     reader.onload = (o) => {
       const res = reader.result;
       if (typeof res == 'string') {
-        imageSource = res;
         img.src = res;
       }
     };
@@ -102,42 +99,4 @@ function generate() {
   generator.style.display = "none"
   generated.style.display = "flex"
 
-}
-
-function prepareToGenerate() {
-  
-}
-
-function update(ctx: CanvasRenderingContext2D) {
-  // let image = new Image()
-  // image.src = imageSource
-
-  // drawImage(ctx, image)
-  // drawCroper(ctx, cropRect)
-}
-
-function drawImage(ctx: CanvasRenderingContext2D, image: HTMLImageElement) {
-  ctx.drawImage(image, 0, 0, cropRect.w, cropRect.h)
-}
-
-function drawCroper(ctx: CanvasRenderingContext2D, cropRect: any) {
-  let {x, y, w, h} = cropRect
-  let corners = [
-    {x: x, y: y},
-    {x: x + w, y: y},
-    {x: x + w, y: y + h},
-    {x: x, y: y + h},
-  ]
-
-  // draw rect
-  let rect = new Path2D()
-  rect.rect(x, y, w, h)
-  ctx.strokeStyle = 'blue'
-  ctx.lineWidth = 1
-  // ctx.fillStyle = 'rbga(255, 255, 255, .2)'
-  // ctx.fill(rect)
-  ctx.stroke(rect)
-
-  console.log("Crop !");
-  
 }
